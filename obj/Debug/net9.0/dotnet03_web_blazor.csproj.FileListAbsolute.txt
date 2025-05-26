@@ -75,3 +75,4 @@ C:\Users\Admin\Desktop\dotnet03_web_blazor-buoi1_blazor_component_databin\obj\De
 C:\Users\Admin\Desktop\dotnet03_web_blazor-buoi1_blazor_component_databin\obj\Debug\net9.0\dotnet03_web_blazor.pdb
 C:\Users\Admin\Desktop\dotnet03_web_blazor-buoi1_blazor_component_databin\obj\Debug\net9.0\dotnet03_web_blazor.genruntimeconfig.cache
 C:\Users\Admin\Desktop\dotnet03_web_blazor-buoi1_blazor_component_databin\obj\Debug\net9.0\ref\dotnet03_web_blazor.dll
+C:\Users\Admin\Desktop\dotnet03_web_blazor-buoi1_blazor_component_databin\obj\Debug\net9.0\dotnet03_web_blazor.sourcelink.json

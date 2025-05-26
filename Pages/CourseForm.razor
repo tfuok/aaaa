@@ -33,9 +33,9 @@
     </div>
     <div class="form-group">
         <label>Study Method *</label> <br />
-        <input type="radio" name="IsOnline" value="true" id="Online" class="form-check-input" onclick="(value)=> changeCourse(value)">
+        <input type="radio" name="IsOnline" value="true" id="Online" class="form-check-input" @onchange="()=> changeCourse(true)">
         <label for="Online" class="form-check-label">Online</label>
-        <input type="radio" name="IsOnline" value="false" id="Offline" class="form-check-input" onclick="(value)=> changeCourse(value)">
+        <input type="radio" name="IsOnline" value="false" id="Offline" class="form-check-input" @onchange="()=> changeCourse(false)">
         <label for="Offline" class="form-check-label">Offline</label>
     </div>
 
