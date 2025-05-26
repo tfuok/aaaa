@@ -1,0 +1,82 @@
+@page "/course-form"
+
+<EditForm Model="@courseUser" class="w-50 mx-auto" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <h3 class="fw-bold" style="margin-left: 200px;">Course Registration Form</h3>
+
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Full Name *</label>
+        <input class="form-control" placeholder="Enter your Fullname" @bind="@courseUser.FullName">
+        <ValidationMessage For="@(() => courseUser.FullName)" class="text text-danger"></ValidationMessage>
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Email *</label>
+        <input class="form-control" placeholder="Enter your Email" @bind="@courseUser.Email">
+        <ValidationMessage For="@(() => courseUser.Email)" class="text text-danger"></ValidationMessage>
+
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Phone Number *</label>
+        <input class="form-control" placeholder="Enter your phone number" @bind="@courseUser.PhoneNumber">
+        <ValidationMessage For="@(() => courseUser.PhoneNumber)" class="text text-danger"></ValidationMessage>
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Select Course *</label>
+        <select class="form-control" @bind="courseUser.SelectedCourse">
+            <option>Choose...</option>
+            @foreach (var item in Courses.lstCourses)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+        <ValidationMessage For="@(() => courseUser.SelectedCourse)" class="text text-danger"></ValidationMessage>
+    </div>
+    <div class="form-group">
+        <label>Study Method *</label> <br />
+        <input type="radio" name="IsOnline" value="true" id="Online" class="form-check-input" onclick="(value)=> changeCourse(value)">
+        <label for="Online" class="form-check-label">Online</label>
+        <input type="radio" name="IsOnline" value="false" id="Offline" class="form-check-input" onclick="(value)=> changeCourse(value)">
+        <label for="Offline" class="form-check-label">Offline</label>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Perferred Start Date *</label> <br />
+        <input type="date" class="w-100" @bind="@courseUser.StartDate">
+        <ValidationMessage For="@(() => courseUser.StartDate)" class="text text-danger"></ValidationMessage>
+    </div>
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label>Comments or Notes</label>
+        <textarea class="form-control" placeholder="Enter any additional information" style="height: 100px;"
+            @bind="@courseUser.Notes"></textarea>
+    </div>
+    <div class="form-group d-flex align-items-center gap-2" style="margin-bottom: 15px;">
+        <input class="form-check-input" type="checkbox" id="agree" @bind="@courseUser.AgreeTerms" />
+        <div>
+            <label class="form-check-label" for="agree">
+                I agree to the terms and conditions *
+            </label>
+        </div>
+        <div>
+            <ValidationMessage For="@(() => courseUser.AgreeTerms)" class="text-danger" />
+        </div>
+    </div>
+    <button class="btn btn-success w-100" type="submit">Register</button>
+</EditForm>
+
+@code {
+    public CourseUser courseUser = new CourseUser();
+    public void HandleSubmit()
+    {
+        string value = JsonSerializer.Serialize(courseUser);
+        Console.WriteLine("dong 71");
+        Console.WriteLine(value);
+    }
+
+    public void changeCourse(bool value)
+    {
+        var rs = JsonSerializer.Serialize(value);
+        Console.WriteLine("dong 78");
+        Console.WriteLine("value: ",rs);
+        courseUser.IsOnline = value;
+    }
+}
